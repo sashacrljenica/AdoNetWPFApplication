@@ -16,6 +16,10 @@
         <Label x:Name="lblSurname" Content="Surname:" HorizontalAlignment="Left" Margin="66,303,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="126,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="23" Margin="126,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label" Content="Search old Name for Update:" HorizontalAlignment="Left" Margin="23,353,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Search old Surname for Update:" HorizontalAlignment="Left" Margin="23,379,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtOldName" HorizontalAlignment="Left" Height="23" Margin="207,353,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+        <TextBox x:Name="txtOldSurname" HorizontalAlignment="Left" Height="23" Margin="207,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 
     </Grid>
 </Window>

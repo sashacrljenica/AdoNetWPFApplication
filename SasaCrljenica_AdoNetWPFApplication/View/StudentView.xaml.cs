@@ -114,6 +114,7 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
 
                     listStudent.Add(obj);
                 }
+                sqlDR.Close();
             }
             catch (Exception ex)
             {
@@ -143,73 +144,88 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
             finally
             {
                 sqlConn.Close();
-                //SelectDataFromDatabase();
-                //FillDataGrid();
 
                 StudentView studentView = new StudentView();
                 this.Close();
                 studentView.ShowDialog();
-
-
-                //txtName.Text = "";
-                //txtSurname.Text = "";
 
             }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    sqlConn.Open();
-            //    //SqlCommand comm = new SqlCommand("UPDATE tblEmployee SET Name='" + txtBox1.Text + "',Salary=" + txtBox2.Text + ",YearOfService=" + txtBox3 + ",IsInManagement='" + txtBox4 + "'", sqlConn);
-            //    string insertQuery = string.Format("UPDATE tblEmployee SET Name = '{0}', Salary = '{1}', YearOfService = '{2}', IsInManagement = '{3}' WHERE EmployeeID = '{4}'", txtBox1.Text, txtBox2.Text, txtBox3.Text, txtBox4.Text, txtBox5.Text);
-            //    SqlCommand comm = new SqlCommand(insertQuery, sqlConn);
-            //    comm.ExecuteNonQuery();
-            //    MessageBox.Show("Employees succesfully updated!");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message.ToString());
-            //}
-            //finally
-            //{
-            //    sqlConn.Close();
-            //    BindMyData();
-            //    txtBox1.Text = "";
-            //    txtBox2.Text = "";
-            //    txtBox3.Text = "";
-            //    txtBox4.Text = "";
-            //    txtBox5.Text = "";
-            //}
+            Student student = new Student();
+            try
+            {
+                sqlConn.Open();
+
+                string query1 = string.Format("select * from tblStudent where StudentName='{0}' and SurName='{1}';", txtOldName.Text, txtOldSurname.Text);
+                SqlCommand comm1 = new SqlCommand(query1, sqlConn);
+                SqlDataReader sqlDR = comm1.ExecuteReader();
+
+                if (sqlDR.Read())
+                {
+                    student.StudentID = Convert.ToInt32(sqlDR["StudentID"]);
+                    student.Name = sqlDR["StudentName"].ToString();
+                    student.Surname = sqlDR["SurName"].ToString();
+                }
+                sqlDR.Close();
+
+                string query2 = string.Format("update tblStudent set StudentName='{0}', SurName='{1}' where StudentID='{2}';", txtName.Text, txtSurname.Text, student.StudentID);
+                SqlCommand comm2 = new SqlCommand(query2, sqlConn);
+                comm2.ExecuteNonQuery();
+                MessageBox.Show("Student succesfully updated!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                sqlConn.Close();
+
+                StudentView studentView = new StudentView();
+                this.Close();
+                studentView.ShowDialog();
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    sqlConn.Open();
-            //    //SqlCommand comm = new SqlCommand("DELETE FROM tblEmployee WHERE EmployeeID=" + txtStudId.Text + "", sqlConn);
-            //    //string insertQuery = string.Format("DELETE FROM tblEmployee WHERE Name = '{0}'", txtBox1.Text);
-            //    string insertQuery = string.Format("DELETE FROM tblEmployee WHERE EmployeeID = '{0}'", txtBox5.Text);
-            //    SqlCommand comm = new SqlCommand(insertQuery, sqlConn);
-            //    comm.ExecuteNonQuery();
-            //    MessageBox.Show("Employees succesfully deleted!");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message.ToString());
-            //}
-            //finally
-            //{
-            //    sqlConn.Close();
-            //    BindMyData();
-            //    txtBox1.Text = "";
-            //    txtBox2.Text = "";
-            //    txtBox3.Text = "";
-            //    txtBox4.Text = "";
-            //    txtBox5.Text = "";
-            //}
+            Student student = new Student();
+            try
+            {
+                sqlConn.Open();
+
+                string query1 = string.Format("select * from tblStudent where StudentName='{0}' and SurName='{1}';", txtOldName.Text, txtOldSurname.Text);
+                SqlCommand comm1 = new SqlCommand(query1, sqlConn);
+                SqlDataReader sqlDR = comm1.ExecuteReader();
+
+                if (sqlDR.Read())
+                {
+                    student.StudentID = Convert.ToInt32(sqlDR["StudentID"]);
+                    student.Name = sqlDR["StudentName"].ToString();
+                    student.Surname = sqlDR["SurName"].ToString();
+                }
+                sqlDR.Close();
+
+                string query2 = string.Format("delete from tblStudent where StudentID='{0}';", student.StudentID);
+                SqlCommand comm2 = new SqlCommand(query2, sqlConn);
+                comm2.ExecuteNonQuery();
+                MessageBox.Show("Student deleted succesfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                sqlConn.Close();
+
+                StudentView studentView = new StudentView();
+                this.Close();
+                studentView.ShowDialog();
+            }
         }
     }
 }
