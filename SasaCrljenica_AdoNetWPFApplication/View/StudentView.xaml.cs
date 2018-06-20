@@ -24,7 +24,7 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
     /// </summary>
     public partial class StudentView : Window
     {
-        static string connString = Properties.Settings.Default.TriTabeleConnectionString;
+        static string connString = Properties.Settings.Default.TriTabeleConnectionString1;
         SqlConnection sqlConn = new SqlConnection(connString);
 
         public StudentView()
