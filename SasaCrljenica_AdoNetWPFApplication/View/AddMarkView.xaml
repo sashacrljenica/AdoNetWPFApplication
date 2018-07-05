@@ -1,0 +1,15 @@
+﻿<Window x:Class="SasaCrljenica_AdoNetWPFApplication.View.AddMarkView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SasaCrljenica_AdoNetWPFApplication.View"
+        mc:Ignorable="d"
+        Title="AddMarkView" Height="300" Width="300"
+        WindowStartupLocation="CenterScreen"
+        Background="Aqua">
+    <Grid>
+        <Button x:Name="btnClose" Content="Close" IsCancel="True" HorizontalAlignment="Left" Margin="192,222,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

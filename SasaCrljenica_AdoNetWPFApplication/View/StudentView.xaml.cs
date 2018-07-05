@@ -24,71 +24,29 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
     /// </summary>
     public partial class StudentView : Window
     {
-        static string connString = Properties.Settings.Default.TriTabeleConnectionString1;
+        static string connString = Properties.Settings.Default.TriTabeleConnectionString;
         SqlConnection sqlConn = new SqlConnection(connString);
+
+        Student student = new Student();
 
         public StudentView()
         {
             InitializeComponent();
             SelectDataFromDatabase();
             FillDataGrid();
-
-
         }
 
         private List<Student> listStudent = new List<Student>();
-
-        internal List<Student> ListStudent
-        {
-            get
-            {
-                return listStudent;
-            }
-
-            set
-            {
-                listStudent = value;
-            }
-        }
 
         public void FillDataGrid()
         {
             try
             {
-                //sqlConn.Open();
-                //string query = string.Format("SELECT StudentName as Name, SurName as Surname FROM tblStudent");
-                //SqlCommand comm = new SqlCommand(query, sqlConn);
-
-                //// Premoscavanje podataka iz baze u memoriju
-                //SqlDataAdapter da = new SqlDataAdapter(comm);
-
-                ////In memory database
-                //DataSet ds = new DataSet();
-                //da.Fill(ds);
-
-                //dataGridStudent.ItemsSource = ds.Tables[0].DefaultView;
-
-                //DataTable t = new DataTable();
-                //SqlDataAdapter a = new SqlDataAdapter(comm);
-
-                //a.Fill(t);
-
-                //DataSet set = new DataSet();
-
-                //set.Tables.Add(t);
-
-                //dataGridStudent.ItemsSource = set.Tables[0].DefaultView;
-
                 dataGridStudent.ItemsSource = listStudent;
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                sqlConn.Close();
             }
         }
 
@@ -148,32 +106,18 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
                 StudentView studentView = new StudentView();
                 this.Close();
                 studentView.ShowDialog();
-
             }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Student student = new Student();
             try
             {
                 sqlConn.Open();
 
-                string query1 = string.Format("select * from tblStudent where StudentName='{0}' and SurName='{1}';", txtOldName.Text, txtOldSurname.Text);
-                SqlCommand comm1 = new SqlCommand(query1, sqlConn);
-                SqlDataReader sqlDR = comm1.ExecuteReader();
-
-                if (sqlDR.Read())
-                {
-                    student.StudentID = Convert.ToInt32(sqlDR["StudentID"]);
-                    student.Name = sqlDR["StudentName"].ToString();
-                    student.Surname = sqlDR["SurName"].ToString();
-                }
-                sqlDR.Close();
-
-                string query2 = string.Format("update tblStudent set StudentName='{0}', SurName='{1}' where StudentID='{2}';", txtName.Text, txtSurname.Text, student.StudentID);
-                SqlCommand comm2 = new SqlCommand(query2, sqlConn);
-                comm2.ExecuteNonQuery();
+                string query = string.Format("update tblStudent set StudentName='{0}', SurName='{1}' where StudentID='{2}';", txtName.Text, txtSurname.Text, student.StudentID);
+                SqlCommand comm = new SqlCommand(query, sqlConn);
+                comm.ExecuteNonQuery();
                 MessageBox.Show("Student succesfully updated!");
             }
             catch (Exception ex)
@@ -192,27 +136,21 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            Student student = new Student();
             try
             {
                 sqlConn.Open();
 
-                string query1 = string.Format("select * from tblStudent where StudentName='{0}' and SurName='{1}';", txtOldName.Text, txtOldSurname.Text);
-                SqlCommand comm1 = new SqlCommand(query1, sqlConn);
-                SqlDataReader sqlDR = comm1.ExecuteReader();
-
-                if (sqlDR.Read())
-                {
-                    student.StudentID = Convert.ToInt32(sqlDR["StudentID"]);
-                    student.Name = sqlDR["StudentName"].ToString();
-                    student.Surname = sqlDR["SurName"].ToString();
-                }
-                sqlDR.Close();
-
                 string query2 = string.Format("delete from tblStudent where StudentID='{0}';", student.StudentID);
                 SqlCommand comm2 = new SqlCommand(query2, sqlConn);
-                comm2.ExecuteNonQuery();
-                MessageBox.Show("Student deleted succesfully!");
+                if (student.StudentID != 0)
+                {
+                    comm2.ExecuteNonQuery();
+                    MessageBox.Show("Student deleted succesfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Please select Student for deleting!");
+                }
             }
             catch (Exception ex)
             {
@@ -225,6 +163,20 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
                 StudentView studentView = new StudentView();
                 this.Close();
                 studentView.ShowDialog();
+            }
+        }
+
+        private void btnShowStudentForUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            student = (Student)dataGridStudent.SelectedItem;
+            if (student != null)
+            {
+                txtName.Text = student.Name;
+                txtSurname.Text = student.Surname;
+            }
+            else
+            {
+                MessageBox.Show("Please select Student from table for update data!");
             }
         }
     }

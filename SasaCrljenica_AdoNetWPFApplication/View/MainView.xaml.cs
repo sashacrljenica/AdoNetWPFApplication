@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SasaCrljenica_AdoNetWPFApplication.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,16 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
         private void btnOpenStudent_Click(object sender, RoutedEventArgs e)
         {
             StudentView studentView = new StudentView();
-            this.Close();
+            //this.Close();
             studentView.ShowDialog();
         }
+
+        private void btnOpenMark_Click(object sender, RoutedEventArgs e)
+        {
+             MarkView markView = new MarkView();
+            //this.Close();
+            markView.ShowDialog();
+        }
+
     }
 }

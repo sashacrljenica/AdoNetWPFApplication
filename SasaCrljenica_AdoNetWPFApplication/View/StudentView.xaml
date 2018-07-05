@@ -7,19 +7,18 @@
         mc:Ignorable="d"
         Title="StudentView" Height="493.587" Width="447.087" Background="Chocolate" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid x:Name="dataGridStudent" HorizontalAlignment="Left" Margin="51,36,0,0" VerticalAlignment="Top" Height="162" Width="353"/>
-        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="329,420,0,0" VerticalAlignment="Top" Width="75" IsCancel="True"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="329,265,0,0" VerticalAlignment="Top" Width="75" Click="btnAdd_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="329,303,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="329,342,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
-        <Label x:Name="lblName" Content="Name:" HorizontalAlignment="Left" Margin="66,265,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblSurname" Content="Surname:" HorizontalAlignment="Left" Margin="66,303,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="126,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="23" Margin="126,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label" Content="Search old Name for Update:" HorizontalAlignment="Left" Margin="23,353,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Search old Surname for Update:" HorizontalAlignment="Left" Margin="23,379,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtOldName" HorizontalAlignment="Left" Height="23" Margin="207,353,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-        <TextBox x:Name="txtOldSurname" HorizontalAlignment="Left" Height="23" Margin="207,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+        <DataGrid x:Name="dataGridStudent"  
+                  HorizontalAlignment="Left" Margin="51,36,0,0" VerticalAlignment="Top" Height="162" Width="353"/>
+
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="329,398,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Height="42"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="160,327,0,0" VerticalAlignment="Top" Width="75" Click="btnAdd_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="160,383,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="160,418,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
+        <Label x:Name="lblName" Content="Name:" HorizontalAlignment="Left" Margin="51,245,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSurname" Content="Surname:" HorizontalAlignment="Left" Margin="51,278,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="115,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="23" Margin="115,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnShowStudentForUpdate" Content="Selecting Student for Update/Delete" HorizontalAlignment="Left" Margin="51,211,0,0" VerticalAlignment="Top" Width="205" Click="btnShowStudentForUpdate_Click"/>
 
     </Grid>
 </Window>
