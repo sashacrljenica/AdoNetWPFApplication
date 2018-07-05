@@ -140,11 +140,11 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
             {
                 sqlConn.Open();
 
-                string query2 = string.Format("delete from tblStudent where StudentID='{0}';", student.StudentID);
-                SqlCommand comm2 = new SqlCommand(query2, sqlConn);
+                string query = string.Format("delete from tblStudent where StudentID='{0}';", student.StudentID);
+                SqlCommand comm = new SqlCommand(query, sqlConn);
                 if (student.StudentID != 0)
                 {
-                    comm2.ExecuteNonQuery();
+                    comm.ExecuteNonQuery();
                     MessageBox.Show("Student deleted succesfully!");
                 }
                 else
