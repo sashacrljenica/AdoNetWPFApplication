@@ -5,14 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SasaCrljenica_AdoNetWPFApplication.View"
         mc:Ignorable="d"
-        Title="Mark Of Student" Height="300" Width="300"
+        Title="Mark Of Student" Height="650" Width="500"
         WindowStartupLocation="CenterScreen"
         Background="Cyan">
     <Grid>
-        <Button x:Name="btnClose" Content="Close" IsCancel="True" HorizontalAlignment="Left" Margin="196,224,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnAddMark" Content="AddMark" HorizontalAlignment="Left" Margin="196,183,0,0" VerticalAlignment="Top" Width="75" Click="btnAddMark_Click"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="42,52,0,0" VerticalAlignment="Top" Height="100" Width="229"/>
-        <Label x:Name="lblMark" Content="Table Mark of Student from database:" HorizontalAlignment="Center" Margin="42,10,22.6,0" VerticalAlignment="Top" Width="229"/>
+        <Label x:Name="lblTitle" Content="Table Mark of Student from database:" HorizontalAlignment="Center" Margin="42,10,22.6,0" VerticalAlignment="Top" Width="229"/>
+        <Button x:Name="btnAddMark" Content="AddMark" HorizontalAlignment="Left" Margin="371,384,0,0" VerticalAlignment="Top" Width="75" Click="btnAddMark_Click"/>
+        <Button x:Name="btnUpdate" Content="UpdateMark" HorizontalAlignment="Left" Margin="371,420,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnDelete" Content="DeleteMark" HorizontalAlignment="Left" Margin="371,453,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnClose" Content="Close" IsCancel="True" HorizontalAlignment="Left" Margin="371,549,0,0" VerticalAlignment="Top" Width="75" Height="47"/>
+        <DataGrid x:Name="dataGridMark" HorizontalAlignment="Left" Margin="42,52,0,0" 
+                  VerticalAlignment="Top" Height="300" Width="400"
+                  AlternatingRowBackground="LightGreen"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Number}" Header="No." IsReadOnly="True"
+                                    FontFamily="georgia" FontSize="15" />
+                <DataGridTextColumn Binding="{Binding StudentName}" Header="Name" IsReadOnly="True"
+                                    FontFamily="georgia" FontSize="15" />
+                <DataGridTextColumn Binding="{Binding StudentSurname}" Header="Surname" IsReadOnly="True"
+                                    FontFamily="georgia" FontSize="15"/>
+                <DataGridTextColumn Binding="{Binding SubjectName}" Header="Subject" IsReadOnly="True"
+                                    FontFamily="georgia" FontSize="15"/>
+                <DataGridTextColumn Binding="{Binding MarkEvaluation}" Header="Mark" IsReadOnly="True"
+                                    FontFamily="georgia" FontSize="15"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="lblName" Content="StudentName:" HorizontalAlignment="Left" Margin="42,381,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSurname" Content="StudentSurname:" HorizontalAlignment="Left" Margin="42,412,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSubject" Content="SubjectName:" HorizontalAlignment="Left" Margin="42,440,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMarkEvaluation" Content="MarkEvaluation:" HorizontalAlignment="Left" Margin="42,468,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtStudentName" Text="{Binding SelectedItem.StudentName, ElementName=dataGridMark}" HorizontalAlignment="Left" Height="23" Margin="158,384,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtStudentSurname" Text="{Binding SelectedItem.StudentSurname, ElementName=dataGridMark}" HorizontalAlignment="Left" Height="23" Margin="158,412,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSubjectName" Text="{Binding SelectedItem.SubjectName, ElementName=dataGridMark}" HorizontalAlignment="Left" Height="23" Margin="158,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtMarkEvaluation" Text="{Binding SelectedItem.MarkEvaluation, ElementName=dataGridMark}" HorizontalAlignment="Left" Height="23" Margin="158,468,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

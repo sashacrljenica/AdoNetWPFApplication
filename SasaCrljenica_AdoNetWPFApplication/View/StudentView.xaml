@@ -13,24 +13,23 @@
                   AlternatingRowBackground="LightGreen"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Number}" Header="No." IsReadOnly="True"
+                                    FontFamily="georgia" FontSize="15" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True"
                                     FontFamily="georgia" FontSize="15" />
                 <DataGridTextColumn Binding="{Binding Surname}" Header="Surname" IsReadOnly="True"
                                     FontFamily="georgia" FontSize="15"/>
-
-
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="329,398,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Height="42"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="329,305,0,0" VerticalAlignment="Top" Width="75" Click="btnAdd_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="181,383,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="181,418,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
-        <Button x:Name="btnShowStudentForUpdate" Content="Selecting Student for Update/Delete" HorizontalAlignment="Left" Margin="51,331,0,0" VerticalAlignment="Top" Width="205" Click="btnShowStudentForUpdate_Click"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="329,408,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Height="42"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="284,305,0,0" VerticalAlignment="Top" Width="120" Click="btnAdd_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="284,337,0,0" VerticalAlignment="Top" Width="120" Click="btnUpdate_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="284,371,0,0" VerticalAlignment="Top" Width="120" Click="btnDelete_Click"/>
         <Label x:Name="lblName" Content="Name:" HorizontalAlignment="Left" Margin="211,223,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblSurname" Content="Surname:" HorizontalAlignment="Left" Margin="197,260,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="284,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Height="23" Margin="284,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtName" Text="{Binding SelectedItem.Name, ElementName=dataGridStudent}" HorizontalAlignment="Left" Height="23" Margin="284,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSurname" Text="{Binding SelectedItem.Surname, ElementName=dataGridStudent}"  HorizontalAlignment="Left" Height="23" Margin="284,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

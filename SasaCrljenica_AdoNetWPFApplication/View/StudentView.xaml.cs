@@ -28,6 +28,7 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
         SqlConnection sqlConn = new SqlConnection(connString);
 
         Student student = new Student();
+        int no = 1;
 
         public StudentView()
         {
@@ -50,6 +51,8 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
             }
         }
 
+        #region CRUD operation
+
         private void SelectDataFromDatabase()
         {
             string query = "select * from tblStudent";
@@ -69,8 +72,11 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
                     obj.StudentID = Convert.ToInt32(sqlDR["StudentID"]);
                     obj.Name = sqlDR["StudentName"].ToString();
                     obj.Surname = sqlDR["SurName"].ToString();
+                    obj.Number = no;
 
                     listStudent.Add(obj);
+
+                    no++;
                 }
                 sqlDR.Close();
             }
@@ -86,39 +92,73 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            string query = string.Format("insert into tblStudent values ('{0}','{1}')", txtName.Text, txtSurname.Text);
-            try
+            if (txtName.Text != "" && txtSurname.Text != "")
             {
+                string query1 = string.Format("select * from tblStudent where StudentName='{0}' and SurName='{1}';", txtName.Text, txtSurname.Text);
+
                 sqlConn.Open();
 
-                SqlCommand comm = new SqlCommand(query, sqlConn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Student succesfully added!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                sqlConn.Close();
+                SqlCommand comm1 = new SqlCommand(query1, sqlConn);
+                SqlDataReader sqlReader = comm1.ExecuteReader();
 
-                StudentView studentView = new StudentView();
-                this.Close();
-                studentView.ShowDialog();
+                if (!sqlReader.HasRows)
+                {
+                    string query = string.Format("insert into tblStudent values ('{0}','{1}')", txtName.Text, txtSurname.Text);
+                    try
+                    {
+                        sqlReader.Close();
+                        SqlCommand comm = new SqlCommand(query, sqlConn);
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show("Student succesfully added!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                    finally
+                    {
+                        sqlConn.Close();
+
+                        StudentView studentView = new StudentView();
+                        this.Close();
+                        studentView.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Particular Student already exist!");
+                    sqlReader.Close();
+                    sqlConn.Close();
+                    txtName.Text = "";
+                    txtSurname.Text = "";
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please write name and surname of Student before add to database!");
             }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            student = (Student)dataGridStudent.SelectedItem;
+
             try
             {
                 sqlConn.Open();
 
                 string query = string.Format("update tblStudent set StudentName='{0}', SurName='{1}' where StudentID='{2}';", txtName.Text, txtSurname.Text, student.StudentID);
                 SqlCommand comm = new SqlCommand(query, sqlConn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Student succesfully updated!");
+                if (student.StudentID != 0)
+                {
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Student succesfully updated!");
+                }
+                else
+                {
+                    MessageBox.Show("Please select Student for updating!");
+                }
             }
             catch (Exception ex)
             {
@@ -136,20 +176,29 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            student = (Student)dataGridStudent.SelectedItem;
+
             try
             {
-                sqlConn.Open();
-
-                string query = string.Format("delete from tblStudent where StudentID='{0}';", student.StudentID);
-                SqlCommand comm = new SqlCommand(query, sqlConn);
-                if (student.StudentID != 0)
+                if (student != null)
                 {
-                    comm.ExecuteNonQuery();
-                    MessageBox.Show("Student deleted succesfully!");
+                    sqlConn.Open();
+
+                    string query = string.Format("delete from tblStudent where StudentID='{0}';", student.StudentID);
+                    SqlCommand comm = new SqlCommand(query, sqlConn);
+                    if (student.StudentID != 0)
+                    {
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show("Student deleted succesfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select Student for deleting!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please select Student for deleting!");
+                    MessageBox.Show("Please select Student for delete!");
                 }
             }
             catch (Exception ex)
@@ -164,21 +213,8 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
                 this.Close();
                 studentView.ShowDialog();
             }
-        }
-
-        private void btnShowStudentForUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            student = (Student)dataGridStudent.SelectedItem;
-            if (student != null)
-            {
-                txtName.Text = student.Name;
-                txtSurname.Text = student.Surname;
-            }
-            else
-            {
-                MessageBox.Show("Please select Student from table for update data!");
-            }
-        }
+        }     
+        #endregion
     }
 }
 

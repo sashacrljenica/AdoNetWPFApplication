@@ -65,16 +65,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\Mark.cs" />
     <Compile Include="Model\Student.cs" />
-    <Compile Include="View\AddMarkView.xaml.cs">
-      <DependentUpon>AddMarkView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\AddStudentView.xaml.cs">
-      <DependentUpon>AddStudentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\AddSubjectView.xaml.cs">
-      <DependentUpon>AddSubjectView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Model\Subject.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -99,18 +92,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AddMarkView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\AddStudentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\AddSubjectView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

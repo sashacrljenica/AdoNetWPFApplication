@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace SasaCrljenica_AdoNetWPFApplication.Model
 {
-    class Student
+    class Subject
     {
-        public int StudentID { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public int Number { get; set; }
-
+        public int SubjectID { get; set; }
+        public string NameOfSubject { get; set; }
     }
 }
