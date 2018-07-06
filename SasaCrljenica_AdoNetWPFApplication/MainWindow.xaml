@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SasaCrljenica_AdoNetWPFApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" Background="LightBlue">
+        Title="Login Window"
+        Height="350" Width="525" 
+        WindowStartupLocation="CenterScreen" Background="LightBlue">
     <Grid>
         <GroupBox x:Name="groupBox" Header="Sign In" HorizontalAlignment="Left" Margin="129,62,0,0" VerticalAlignment="Top" Height="170" Width="262" RenderTransformOrigin="0.497,0.383" />
 

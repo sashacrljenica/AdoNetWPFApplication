@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainView" Height="300" Width="300" Background="Coral" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="189,191,0,0" VerticalAlignment="Top" Width="75" IsCancel="True"/>
-        <Button x:Name="btnOpenStudent" Content="Open Student Name" HorizontalAlignment="Left" Margin="41,35,0,0" VerticalAlignment="Top" Width="116" Click="btnOpenStudent_Click"/>
-        <Button x:Name="btnOpenSubject" Content="Open Subject of Student" HorizontalAlignment="Left" Margin="41,124,0,0" VerticalAlignment="Top" Width="156"/>
-        <Button x:Name="btnOpenMark" Content="Open Mark of Student" HorizontalAlignment="Left" Margin="41,82,0,0" VerticalAlignment="Top" Width="156" Click="btnOpenMark_Click"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="182,177,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Height="58"/>
+        <Button x:Name="btnOpenStudent" Content="Name of Student" HorizontalAlignment="Left" Margin="41,35,0,0" VerticalAlignment="Top" Width="216" Click="btnOpenStudent_Click"/>
+        <Button x:Name="btnOpenMark" Content="Mark of Student" HorizontalAlignment="Left" Margin="41,82,0,0" VerticalAlignment="Top" Width="216" Click="btnOpenMark_Click"/>
+        <Button x:Name="btnOpenSubject" Content="Subject of Student" HorizontalAlignment="Left" Margin="41,124,0,0" VerticalAlignment="Top" Width="216"/>
 
     </Grid>
 </Window>
