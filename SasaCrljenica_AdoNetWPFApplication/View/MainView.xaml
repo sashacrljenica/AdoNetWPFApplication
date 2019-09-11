@@ -6,11 +6,17 @@
         xmlns:local="clr-namespace:SasaCrljenica_AdoNetWPFApplication.View"
         mc:Ignorable="d"
         Title="MainView" Height="300" Width="300" Background="Coral" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="182,177,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Height="58"/>
-        <Button x:Name="btnOpenStudent" Content="Name of Student" HorizontalAlignment="Left" Margin="41,35,0,0" VerticalAlignment="Top" Width="216" Click="btnOpenStudent_Click"/>
-        <Button x:Name="btnOpenMark" Content="Mark of Student" HorizontalAlignment="Left" Margin="41,82,0,0" VerticalAlignment="Top" Width="216" Click="btnOpenMark_Click"/>
-        <Button x:Name="btnOpenSubject" Content="Subject of Student" HorizontalAlignment="Left" Margin="41,124,0,0" VerticalAlignment="Top" Width="216"/>
-
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.Resources>
+            <Style TargetType="Button">
+                <Setter x:Name="margin" Property="Margin" Value="0,0,0,10" />
+                <Setter x:Name="width" Property="Width" Value="250"/>
+                <Setter x:Name="fontWeight" Property="FontWeight" Value="Bold" />
+            </Style>
+        </StackPanel.Resources>
+        <Button x:Name="btnOpenStudent" Content="Name of Student" Click="btnOpenStudent_Click"/>
+        <Button x:Name="btnOpenMark" Content="Mark of Student" Click="btnOpenMark_Click"/>
+        <Button x:Name="btnOpenSubject" Content="Subject of Student" />
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Right"  Width="75" IsCancel="True" Height="60"/>
+    </StackPanel>
 </Window>
