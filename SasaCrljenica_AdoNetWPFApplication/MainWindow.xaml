@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:SasaCrljenica_AdoNetWPFApplication"
         mc:Ignorable="d"
         Title="Login Window"
-        Height="350" Width="525" 
+        Height="400" Width="525" 
         WindowStartupLocation="CenterScreen" Background="LightBlue">
-    <Grid>
+    <!--<Grid>
         <GroupBox x:Name="groupBox" Header="Sign In" HorizontalAlignment="Left" Margin="129,62,0,0" VerticalAlignment="Top" Height="170" Width="262" RenderTransformOrigin="0.497,0.383" />
 
         <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" Margin="171,145,0,0" VerticalAlignment="Top"/>
@@ -16,5 +16,23 @@
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="255,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="255,151,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="300,186,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click" IsDefault="True"/>
+    </Grid>-->
+
+    <Grid>
+        <GroupBox x:Name="groupBox" Margin="140,90" Padding="10">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/group.png" Margin="5,0" Height="20"/>
+                    <TextBlock FontWeight="Bold">Sign In</TextBlock>
+                </StackPanel>
+            </GroupBox.Header>
+            <StackPanel>
+                <TextBlock x:Name="lblName" Text="User name:" Margin="25,0" Padding="5" FontWeight="Bold" />
+                <TextBox x:Name="txtName" Width="150" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="lblPassword" Text="Password:" Margin="25,0" Padding="5" FontWeight="Bold"/>
+                <PasswordBox x:Name="passwordBox" Width="150" HorizontalAlignment="Center"/>
+                <Button x:Name="btnLogin" Content="Login" Margin="25,15" HorizontalAlignment="Right" Click="btnLogin_Click" IsDefault="True"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>
