@@ -39,7 +39,7 @@ namespace SasaCrljenica_AdoNetWPFApplication
             }
             else
             {
-                MessageBox.Show("Error! Please enter valid Username and password!");
+                MessageBox.Show("Error! Please enter valid Username and password!","Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

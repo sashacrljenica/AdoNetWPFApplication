@@ -24,8 +24,17 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
     /// </summary>
     public partial class StudentView : Window
     {
-        static string connString = Properties.Settings.Default.TriTabeleConnectionString;
-        SqlConnection sqlConn = new SqlConnection(connString);
+        //for Dell-PC
+        //static string connString = Properties.Settings.Default.TriTabeleConnectionString;
+
+        //for HP Laptop
+        //static string connString = Properties.Settings.Default.TriTabeleConnectionString1;
+
+        //added 19.09.2019, universal connection string
+        //static string computer = Environment.MachineName;
+        //static string connString = @"Data Source=" + computer + @";Initial Catalog=TriTabele;Integrated Security=True";
+
+        SqlConnection sqlConn = new SqlConnection(Connection.ConnectionString.connString);
 
         Student student = new Student();
         int no = 1;
@@ -213,7 +222,7 @@ namespace SasaCrljenica_AdoNetWPFApplication.View
                 this.Close();
                 studentView.ShowDialog();
             }
-        }     
+        }
         #endregion
     }
 }
